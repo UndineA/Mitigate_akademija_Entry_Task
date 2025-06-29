@@ -9,7 +9,7 @@ class VendingMachine
     balance
   end
 
-  def select_product(code)
+  def products(code)
     product = @product_catalog.find_product(code)
 
     raise 'No product' if product.nil?
