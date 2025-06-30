@@ -21,7 +21,7 @@ class VendingMachine
     @display_manager.format_transaction_result(product[:name], change)
   end
 
-  def dispense(product)
+  def select_product(product)
     @balance
   end
 
