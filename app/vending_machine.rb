@@ -4,6 +4,15 @@ require_relative 'transaction_processor'
 require_relative 'display_manager'
 
 class VendingMachine
+  attr_accessor :coin_manager, :product_catalog, :transaction_processor, :display_manager
+
+  def initialize
+    @coin_manager = CoinManager.new
+    @product_catalog = ProductCatalog.new
+    @transaction_processor = TransactionProcessor.new
+    @display_manager = DisplayManager.new(@transaction_processor)
+  end
+
   def insert(amount)
     @coin_manager.add_coins(amount)
     balance
