@@ -7,7 +7,7 @@ class CoinManager
     @balance
   end
 
-  def get_balance
+  def balance
     @balance
   end
 
