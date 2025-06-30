@@ -1,6 +1,6 @@
 class CoinManager
   def initialize
-    @balance = nil
+    @balance = 0.0
   end
 
   def add_coins(amount)
