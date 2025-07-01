@@ -8,7 +8,15 @@ class DisplayManager
   end
 
   def format_product_list(products)
-    "Available Products:\n B2 - Soda Pop - 2.20"
+    result = "Available Products:"
+
+    products.each do |code, product| 
+      if product[:stock] > 0
+        result += "\n#{code} - #{product[:name]} - #{product[:price]}"
+      end
+    end
+
+    result
   end
 
   def format_transaction_result(product_name, change)
