@@ -25,6 +25,8 @@ class VendingMachine
       'Invalid product'
     elsif balance < product[:price]
       'Insufficient funds'
+    elsif product[:stock] <= 0
+      'Product out of stock'
     else
         @product_catalog.update_stock(code)
         change = @transaction_processor.process_transaction(product, balance)
