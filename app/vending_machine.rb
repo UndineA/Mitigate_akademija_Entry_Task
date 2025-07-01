@@ -31,7 +31,7 @@ class VendingMachine
   end
 
   def select_product(product)
-    @balance
+    products(product)
   end
 
   def balance
