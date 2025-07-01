@@ -21,13 +21,16 @@ class VendingMachine
   def products(code)
     product = @product_catalog.find_product(code)
 
-    raise 'No product' if product.nil?
-    raise 'Insufficient funds' if balance < product[:price]
-
-    @product_catalog.update_stock(code)
-    change = @transaction_processor.process_transaction(product, balance)
-    @coin_manager.deduct_amount(product[:price])
-    @display_manager.format_transaction_result(product[:name], change)
+    if product.nil? 
+      'Invalid product'
+    elsif balance < product[:price]
+      'Insufficient funds'
+    else
+        @product_catalog.update_stock(code)
+        change = @transaction_processor.process_transaction(product, balance)
+        @coin_manager.deduct_amount(product[:price])
+        @display_manager.format_transaction_result(product[:name], change)
+    end
   end
 
   def select_product(product)
